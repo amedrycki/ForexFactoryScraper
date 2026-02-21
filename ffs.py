@@ -3,7 +3,7 @@ A more sophisticated web scraper that downloads forex calendar data from ForexFa
 
 The download is managed in packets of days, weeks or month to minimize network traffic.
 The chosen timezone is Eastern Standard Time (EST) time-zone WITH Day Light Savings adjustments.
-This is easily adjustable trough the usage of timezone aware datetime objects.
+
 The program starts at the first possible download date, jan 1 2007, and ends on the current day,
 up to the current time.
 Any later executions of the program checks for the datetime of the last entry and updates the list
@@ -17,16 +17,17 @@ Headless mode is not possible anymore, since Forex Factory uses Cloudflare DDoS 
 """
 import csv
 import re
+import time
 from datetime import datetime, timedelta
 from os import path
+from os import getcwd
 
-import undetected_chromedriver.v2 as uc
+import undetected_chromedriver as uc
 from dateutil.tz import gettz
 from bs4 import BeautifulSoup
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 
@@ -43,16 +44,25 @@ def setup_driver():
 
 
 def get_timezone(driver):
-    """Extracts the current default timezone from the website.
+    """Sets timezone via cookies.
 
     Returns:
         timezone: the timezone
     """
-    driver.get('https://www.forexfactory.com/timezone.php')
-    select = Select(WebDriverWait(driver, 10).until(
-        ec.presence_of_element_located((By.ID, 'timezone'))))
-    tz_name = select.first_selected_option.text[1:10]
-    return gettz(tz_name)
+    # print("Setting timezone via cookies to bypass UI changes...")
+    driver.get("https://www.forexfactory.com/")
+    
+    driver.add_cookie({
+        'name': 'timezone', 
+        'value': 'America/New_York', 
+        'domain': '.forexfactory.com', 
+        'path': '/'
+    })
+    
+    driver.refresh()
+    time.sleep(2) # Give it a moment to apply
+    
+    return gettz("America/New_York")
 
 
 def scrap(timezone):
@@ -66,43 +76,124 @@ def scrap(timezone):
         ff_timezone = get_timezone(driver)
         start_date = get_start_dt(ff_timezone)
         fields = ['date', 'time', 'currency', 'impact', 'event', 'actual', 'forecast', 'previous']
+        save_path = path.join(getcwd(), 'forex_factory_history.csv')
+        
+        re_day_month = re.compile('^\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)$')
+        re_month_day = re.compile('^(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)$')
+        
         while True:
             try:
                 date_url = dt_to_url(start_date)
             except ValueError:
-                print('Successfully retrieved data')
+                print(f'\nSuccessfully retrieved data to {save_path}')
                 return
-            print('\r' + 'Scraping data for link: ' + date_url, end='', flush=True)
-
+            print(f'Scraping data for link: {date_url}', flush=True)
             driver.get('https://www.forexfactory.com/' + date_url)
+            
+            try:
+                # 1. Wait for the initial calendar skeleton to appear
+                WebDriverWait(driver, 15).until(ec.presence_of_element_located((By.CSS_SELECTOR, 'tr.calendar__row')))
+                
+                # 2. Dynamically scroll to trigger lazy-loaded rows
+                # print("Scrolling through page to trigger lazy-loaded rows...")
+                
+                # Set a safety timeout so we don't get stuck in an infinite loop
+                scroll_timeout = time.time() + 30 
+                
+                while time.time() < scroll_timeout:
+                    # Re-fetch the list of blank cells on every loop
+                    blank_cells = driver.find_elements(By.CSS_SELECTOR, 'td.calendar__cell--blank')
+                    
+                    if not blank_cells:
+                        # print("All lazy-loaded rows successfully triggered!")
+                        break # No more blank cells found, exit the loop
+                    
+                    try:
+                        # Scroll to the first blank cell in the newly fetched list.
+                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", blank_cells[0])
+                        time.sleep(0.1) # Give the site a 0.1 second to fetch data and update the DOM
+                    except Exception:
+                        # If we get a StaleElementReferenceException here, it's actually a good thing! 
+                        # It means the DOM just updated. We just 'pass' and let the loop re-fetch.
+                        pass
+                
+                # 3. Final safety check to ensure everything loaded
+                WebDriverWait(driver, 15).until(ec.none_of(ec.presence_of_element_located((By.CSS_SELECTOR, 'td.calendar__cell--blank'))))
+                
+            except TimeoutException:
+                print(f" -> Timeout: Some calendar data didn't load for {date_url}.")
+                start_date = get_next_dt(start_date, mode=get_mode(date_url))
+                quit()
+
             soup = BeautifulSoup(driver.page_source, 'lxml')
             table = soup.find('table', class_='calendar__table')
-            table_rows = table.select('tr.calendar__row.calendar_row')
+            
+            if not table:
+                print(" -> Error: Table structure not found.")
+                start_date = get_next_dt(start_date, mode=get_mode(date_url))
+                exit_program()
+                
+            table_rows = table.select('tbody > tr.calendar__row')
+            num_rows = len(table_rows)
+            # print(f'Found {num_rows} row(s).')
             date = None
+            
+            row_num = 0
             for table_row in table_rows:
+                # print(f'Parsing row {row_num} / {num_rows}: {table_row}.')
+                row_num += 1
+                
+                # Skip 'calendar__row--day-breaker' rows and reset date.
+                if 'calendar__row--day-breaker' in table_row['class']:
+                    date = None
+                    continue
+
+                # Skip 'calendar__row--no-event' rows.
+                if 'calendar__row--no-event' in table_row['class']:
+                    continue
+
                 try:
                     currency, impact, event, actual, forecast, previous = '', '', '', '', '', ''
+                    past_month_data = False
+                    tentative_time = False
+                    time_day_month = False
                     for field in fields:
-                        data = table_row.select('td.calendar__cell.calendar__{0}.{0}'.format(field))[0]
+                        selection = table_row.select('td.calendar__{0}'.format(field))
+                        if not selection and field == 'date' and not date == None:
+                            continue
+                        data = selection[0]
                         if field == 'date' and data.text.strip() != '':
                             day = data.text.strip().replace('\n', '')
                             if date is None:
                                 year = str(start_date.year)
                             else:
                                 year = str(get_next_dt(date, mode='day').year)
-                            date = datetime.strptime(','.join([year, day]), '%Y,%a%b %d') \
+                            date = datetime.strptime(','.join([year, day]), '%Y,%a %b %d') \
                                 .replace(tzinfo=ff_timezone)
                         elif field == 'time' and data.text.strip() != '':
-                            time = data.text.strip()
-                            if 'Day' in time:
+                            time_str = data.text.strip()
+                            
+                            if 'Day' in time_str:
                                 date = date.replace(hour=23, minute=59, second=59)
-                            elif 'Data' in time:
+                            elif 'Data' in time_str:
                                 date = date.replace(hour=0, minute=0, second=1)
+                                past_month_data = True
+                            elif 'Tentative' in time_str:
+                                date = date.replace(hour=0, minute=0, second=2)
+                                tentative_time = True
+                            elif re_day_month.match(time_str):
+                                # i.e. "17th June"
+                                date = date.replace(hour=0, minute=0, second=3)
+                                time_day_month = True
+                            elif re_month_day.match(time_str):
+                                # i.e. "Nov 3rd"
+                                date = date.replace(hour=0, minute=0, second=3)
+                                time_day_month = True
                             else:
-                                i = 1 if len(time) == 7 else 0
+                                i = 1 if len(time_str) == 7 else 0
                                 date = date.replace(
-                                    hour=int(time[:1 + i]) % 12 + (12 * (time[4 + i:] == 'pm')),
-                                    minute=int(time[2 + i:4 + i]), second=0)
+                                    hour=int(time_str[:1 + i]) % 12 + (12 * (time_str[4 + i:] == 'pm')),
+                                    minute=int(time_str[2 + i:4 + i]), second=0)
                         elif field == 'currency':
                             currency = data.text.strip()
                         elif field == 'impact':
@@ -115,23 +206,23 @@ def scrap(timezone):
                             forecast = data.text.strip()
                         elif field == 'previous':
                             previous = data.text.strip()
-                    if date.second == 1:
-                        raise ValueError
+                    # print(f'date={date}, currency={currency}, impact={impact}, event={event}, actual={actual}, forecast={forecast}, previous={previous}')
+                    if past_month_data or tentative_time or time_day_month:
+                        # Nothing we can do with it really.
+                        continue
                     if date <= start_date:
                         continue
                     if date >= datetime.now(tz=date.tzinfo):
                         break
-                    with open('forex_factory_catalog.csv', mode='a', newline='') as file:
+                    with open(save_path, mode='a', newline='', encoding='utf-8') as file:
                         writer = csv.writer(file, delimiter=',')
                         writer.writerow(
                             [str(date.astimezone(timezone)), currency, impact, event, actual, forecast, previous]
                         )
-                except TypeError:
-                    with open('errors.csv', mode='a') as file:
+                except TypeError as e:
+                    with open('errors.csv', mode='a', encoding='utf-8') as file:
                         file.write(str(date) + ' (No Event Found)\n')
-                except ValueError:
-                    with open('errors.csv', mode='a') as file:
-                        file.write(str(date.replace(second=0)) + ' (Data For Past Month)\n')
+            
             start_date = get_next_dt(start_date, mode=get_mode(date_url))
     finally:
         driver.quit()
@@ -143,8 +234,10 @@ def get_start_dt(timezone):
     Returns:
         datetime: The start datetime.
     """
-    if path.isfile('forex_factory_catalog.csv'):
-        with open('forex_factory_catalog.csv', 'rb+') as file:
+    save_path = path.join(getcwd(), 'forex_factory_history.csv')
+    if path.isfile(save_path):
+        with open(save_path, 'rb+') as file:
+            print('Opened ' + file.name + ' to resume writing.')
             file.seek(0, 2)
             file_size = remaining_size = file.tell() - 2
             if file_size > 0:
@@ -156,7 +249,10 @@ def get_start_dt(timezone):
                     remaining_size -= 1
                 file.seek(0)
                 file.truncate(0)
-    return datetime(year=2007, month=1, day=1, hour=0, minute=0, tzinfo=timezone)
+
+    initial_datetime = datetime(year=2007, month=1, day=1, hour=0, minute=0, tzinfo=timezone)
+    print(f'No previous data found. Starting fresh from {initial_datetime}.')
+    return initial_datetime
 
 
 def get_next_dt(date, mode):
@@ -190,14 +286,14 @@ def dt_to_url(date):
         str: The url.
     """
     if dt_is_start_of_month(date) and dt_is_complete(date, mode='month'):
-        return 'calendar.php?month={}'.format(dt_to_str(date, mode='month'))
+        return 'calendar?month={}'.format(dt_to_str(date, mode='month'))
     if dt_is_start_of_week(date) and dt_is_complete(date, mode='week'):
         for weekday in [date + timedelta(days=x) for x in range(7)]:
             if dt_is_start_of_month(weekday) and dt_is_complete(date, mode='month'):
-                return 'calendar.php?day={}'.format(dt_to_str(date, mode='day'))
-        return 'calendar.php?week={}'.format(dt_to_str(date, mode='week'))
+                return 'calendar?day={}'.format(dt_to_str(date, mode='day'))
+        return 'calendar?week={}'.format(dt_to_str(date, mode='week'))
     if dt_is_complete(date, mode='day') or dt_is_today(date):
-        return 'calendar.php?day={}'.format(dt_to_str(date, mode='day'))
+        return 'calendar?day={}'.format(dt_to_str(date, mode='day'))
     raise ValueError('{} is not completed yet.'.format(dt_to_str(date, mode='day')))
 
 
@@ -229,6 +325,10 @@ def dt_is_start_of_month(date):
 def dt_is_today(date):
     today = datetime.now()
     return today.year == date.year and today.month == date.month and today.day == date.day
+
+
+def exit_program():
+    raise SystemExit
 
 
 if __name__ == '__main__':
