@@ -28,6 +28,7 @@ from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 
@@ -44,25 +45,34 @@ def setup_driver():
 
 
 def get_timezone(driver):
-    """Sets timezone via cookies.
+    """Extracts the current default timezone from the website.
 
     Returns:
         timezone: the timezone
     """
-    # print("Setting timezone via cookies to bypass UI changes...")
-    driver.get("https://www.forexfactory.com/")
+    driver.get('https://www.forexfactory.com/timezone.php')
     
-    driver.add_cookie({
-        'name': 'timezone', 
-        'value': 'America/New_York', 
-        'domain': '.forexfactory.com', 
-        'path': '/'
-    })
+    # Wait for the span element to be present and return it directly
+    tz_element = WebDriverWait(driver, 10).until(
+        ec.presence_of_element_located((
+            By.CSS_SELECTOR, 
+            'div.ff-form__row--time-zone > div.ff-form__cell--input > div.ff-form__input--select > div.rich-select > div.rich-select__selected > div.rich-select__selected-label > span.fadeout-end'
+        ))
+    )
     
-    driver.refresh()
-    time.sleep(2) # Give it a moment to apply
+    tz_text = tz_element.get_attribute('textContent').strip()
     
-    return gettz("America/New_York")
+    # Use Regex to extract everything inside the first set of parentheses
+    match = re.search(r'\(([^)]+)\)', tz_text)
+    
+    if match:
+        tz_name = match.group(1) # This pulls out the matched group (e.g., "GMT -5:00")
+    else:
+        # Fallback just in case the format changes and parentheses are removed
+        tz_name = tz_text
+
+    print(f"Parsed Timezone Name: '{tz_name}'")
+    return gettz(tz_name)
 
 
 def scrap(timezone):
@@ -336,4 +346,4 @@ if __name__ == '__main__':
 
     Initializes the module.
     """
-    scrap(gettz('UTC-5'))  # HistData saves its Forex data with UTC-5
+    scrap(gettz('UTC'))  # Save data with UTC timezone.
