@@ -56,11 +56,11 @@ def get_timezone(driver):
     tz_element = WebDriverWait(driver, 10).until(
         ec.presence_of_element_located((
             By.CSS_SELECTOR, 
-            'div.ff-form__row--time-zone > div.ff-form__cell--input > div.ff-form__input--select > div.rich-select > div.rich-select__selected > div.rich-select__selected-label > span.fadeout-end'
+            'div.ff-form__row--time-zone > div.ff-form__cell--input > div.ff-form__input--select > input[name=timezone]'
         ))
     )
     
-    tz_text = tz_element.get_attribute('textContent').strip()
+    tz_text = tz_element.get_attribute('value').strip()
     
     # Use Regex to extract everything inside the first set of parentheses
     match = re.search(r'\(([^)]+)\)', tz_text)
