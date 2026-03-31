@@ -40,8 +40,8 @@ def setup_driver():
     """
     options = uc.ChromeOptions()
     # options.headless = True
-    options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-    return uc.Chrome(options=options)
+    options.add_argument('--no-first-run --no-service-autorun --password-store=basic ')
+    return uc.Chrome(version_main=146, options=options)
 
 
 def get_timezone(driver):
