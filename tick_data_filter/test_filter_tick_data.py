@@ -1,7 +1,7 @@
 import os
 import re
 import tempfile
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 
 import pytest
 
@@ -273,6 +273,78 @@ class TestFilterTicks:
         result = _read_output(output_file)
         assert len(result) == 1
 
+    def test_min_date(self, tmp_path):
+        tick_lines = [
+            "2023.02.14 06:59:30.000;1.20550;1.20569",  # day before min_date
+            "2023.02.15 06:59:30.000;1.20551;1.20570",  # in interval, on min_date
+            "2023.02.15 07:00:00.000;1.20552;1.20571",  # in interval, on min_date
+        ]
+        tick_file = _write_tick_file(str(tmp_path), tick_lines)
+        output_file = os.path.join(str(tmp_path), "out.csv")
+
+        ev1 = datetime(2023, 2, 14, 7, 0, 0)
+        ev2 = datetime(2023, 2, 15, 7, 0, 0)
+        intervals = build_intervals([ev1, ev2], 60, 60)
+
+        filter_ticks(tick_file, output_file, intervals, show_progress=False, min_date=date(2023, 2, 15))
+        result = _read_output(output_file)
+        assert len(result) == 2
+        assert result[0].startswith("2023.02.15")
+
+    def test_max_date(self, tmp_path):
+        tick_lines = [
+            "2023.02.15 06:59:30.000;1.20550;1.20569",  # in interval
+            "2023.02.15 07:00:00.000;1.20551;1.20570",  # in interval
+            "2023.02.16 06:59:30.000;1.20552;1.20571",  # day after max_date
+        ]
+        tick_file = _write_tick_file(str(tmp_path), tick_lines)
+        output_file = os.path.join(str(tmp_path), "out.csv")
+
+        ev1 = datetime(2023, 2, 15, 7, 0, 0)
+        ev2 = datetime(2023, 2, 16, 7, 0, 0)
+        intervals = build_intervals([ev1, ev2], 60, 60)
+
+        filter_ticks(tick_file, output_file, intervals, show_progress=False, max_date=date(2023, 2, 15))
+        result = _read_output(output_file)
+        assert len(result) == 2
+        assert all(line.startswith("2023.02.15") for line in result)
+
+    def test_min_and_max_date(self, tmp_path):
+        tick_lines = [
+            "2023.02.14 07:00:00.000;1.20550;1.20569",  # before min
+            "2023.02.15 06:59:30.000;1.20551;1.20570",  # in range, in interval
+            "2023.02.16 06:59:30.000;1.20552;1.20571",  # in range, in interval
+            "2023.02.17 06:59:30.000;1.20553;1.20572",  # after max
+        ]
+        tick_file = _write_tick_file(str(tmp_path), tick_lines)
+        output_file = os.path.join(str(tmp_path), "out.csv")
+
+        evs = [datetime(2023, 2, d, 7, 0, 0) for d in range(14, 18)]
+        intervals = build_intervals(evs, 60, 60)
+
+        filter_ticks(tick_file, output_file, intervals, show_progress=False,
+                     min_date=date(2023, 2, 15), max_date=date(2023, 2, 16))
+        result = _read_output(output_file)
+        assert len(result) == 2
+        assert result[0].startswith("2023.02.15")
+        assert result[1].startswith("2023.02.16")
+
+    def test_tick_file_with_header(self, tmp_path):
+        tick_lines = [
+            "DateTime;Bid;Ask",  # header line
+            "2023.02.15 06:59:00.000;1.20551;1.20570",
+            "2023.02.15 07:00:00.000;1.20552;1.20571",
+            "2023.02.15 07:01:00.000;1.20553;1.20572",
+        ]
+        tick_file = _write_tick_file(str(tmp_path), tick_lines)
+        output_file = os.path.join(str(tmp_path), "out.csv")
+
+        intervals = build_intervals([datetime(2023, 2, 15, 7, 0, 0)], 60, 60)
+        filter_ticks(tick_file, output_file, intervals, show_progress=False)
+        result = _read_output(output_file)
+        assert len(result) == 3
+        assert "DateTime" not in result[0]
+
 
 # ---------------------------------------------------------------------------
 # Progress helpers
@@ -328,15 +400,39 @@ class TestProgressHelpers:
 # ---------------------------------------------------------------------------
 
 class TestDefaultOutputPath:
-    def test_csv(self):
-        assert default_output_path("data/ticks.csv") == "data/ticks_filtered.csv"
+    def test_csv_with_dates(self):
+        assert default_output_path("data/ticks.csv", date(2020, 1, 1), date(2020, 12, 31)) == "data/ticks_filtered_2020-01-01-2020-12-31.csv"
 
-    def test_no_extension(self):
-        assert default_output_path("data/ticks") == "data/ticks_filtered"
+    def test_no_extension_with_dates(self):
+        assert default_output_path("data/ticks", date(2020, 1, 1), date(2020, 12, 31)) == "data/ticks_filtered_2020-01-01-2020-12-31"
 
-    def test_complex_path(self):
-        result = default_output_path("/some/path/tick_data_GBPUSD.csv")
-        assert result == "/some/path/tick_data_GBPUSD_filtered.csv"
+    def test_complex_path_with_dates(self):
+        result = default_output_path("/some/path/tick_data_GBPUSD.csv", date(2023, 6, 15), date(2024, 3, 1))
+        assert result == "/some/path/tick_data_GBPUSD_filtered_2023-06-15-2024-03-01.csv"
+
+    def test_only_min_date(self, tmp_path):
+        tick_file = tmp_path / "ticks.csv"
+        tick_file.write_text("2024.01.10 08:00:00.000;1.1000;1.1001\n2024.03.20 16:00:00.000;1.1050;1.1051\n")
+        result = default_output_path(str(tick_file), min_date=date(2024, 2, 1))
+        assert result == str(tmp_path / "ticks_filtered_2024-02-01-2024-03-20.csv")
+
+    def test_only_max_date(self, tmp_path):
+        tick_file = tmp_path / "ticks.csv"
+        tick_file.write_text("2024.01.10 08:00:00.000;1.1000;1.1001\n2024.03.20 16:00:00.000;1.1050;1.1051\n")
+        result = default_output_path(str(tick_file), max_date=date(2024, 2, 28))
+        assert result == str(tmp_path / "ticks_filtered_2024-01-10-2024-02-28.csv")
+
+    def test_no_dates_reads_from_file(self, tmp_path):
+        tick_file = tmp_path / "ticks.csv"
+        tick_file.write_text("2024.01.10 08:00:00.000;1.1000;1.1001\n2024.03.20 16:00:00.000;1.1050;1.1051\n")
+        result = default_output_path(str(tick_file))
+        assert result == str(tmp_path / "ticks_filtered_2024-01-10-2024-03-20.csv")
+
+    def test_no_dates_reads_from_file_with_header(self, tmp_path):
+        tick_file = tmp_path / "ticks.csv"
+        tick_file.write_text("DateTime;Bid;Ask\n2024.01.10 08:00:00.000;1.1000;1.1001\n2024.03.20 16:00:00.000;1.1050;1.1051\n")
+        result = default_output_path(str(tick_file))
+        assert result == str(tmp_path / "ticks_filtered_2024-01-10-2024-03-20.csv")
 
 
 # ---------------------------------------------------------------------------

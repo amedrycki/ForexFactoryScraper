@@ -6,6 +6,11 @@ import time
 from datetime import date, datetime, timedelta
 
 
+def _is_header_line(line):
+    """Return True if the line is a CSV header rather than tick data."""
+    return bool(line) and not line[0].isdigit()
+
+
 def parse_tick_timestamp(ts_str):
     return datetime.strptime(ts_str, "%Y.%m.%d %H:%M:%S.%f")
 
@@ -25,6 +30,12 @@ def _parse_tick_ts_fast(ts_str):
 
 def _datetime_to_tuple(dt):
     return (dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.microsecond // 1000)
+
+
+def _datetime_to_tick_ts_bytes(dt):
+    return (f"{dt.year:04d}.{dt.month:02d}.{dt.day:02d} "
+            f"{dt.hour:02d}:{dt.minute:02d}:{dt.second:02d}."
+            f"{dt.microsecond // 1000:03d}").encode("ascii")
 
 
 def parse_forex_factory_events(filepath, include_high, include_med, include_low):
@@ -127,11 +138,17 @@ def _format_progress_bar(percent, current_date_str, day_num, total_days, bar_wid
     return f"\r[{colored_inner}] Processing {current_date_str} (day {day_num}/{total_days})..."
 
 
-def filter_ticks(tick_file, output_file, intervals, show_progress=True):
+def filter_ticks(tick_file, output_file, intervals, show_progress=True, min_date=None, max_date=None):
     if not intervals:
-        with open(output_file, "w", encoding="utf-8"):
+        with open(output_file, "wb"):
             pass
         return
+
+    # Convert bounds to byte strings for direct comparison
+    min_ts = (f"{min_date.year:04d}.{min_date.month:02d}.{min_date.day:02d}"
+              " 00:00:00.000").encode("ascii") if min_date else None
+    max_ts = (f"{max_date.year:04d}.{max_date.month:02d}.{max_date.day:02d}"
+              " 23:59:59.999").encode("ascii") if max_date else None
 
     # Gather progress info
     file_size = os.path.getsize(tick_file) if show_progress else 0
@@ -142,6 +159,8 @@ def filter_ticks(tick_file, output_file, intervals, show_progress=True):
     if show_progress and file_size > 0:
         with open(tick_file, "r", encoding="utf-8") as f:
             first_line = f.readline().strip()
+            if _is_header_line(first_line):
+                first_line = f.readline().strip()
         if first_line:
             first_date = parse_tick_timestamp(first_line[:first_line.index(";")]).date()
         last_line = _read_last_line(tick_file)
@@ -150,77 +169,139 @@ def filter_ticks(tick_file, output_file, intervals, show_progress=True):
         if first_date and last_date:
             total_days = (last_date - first_date).days + 1
 
-    # Convert intervals to comparable tuples for fast comparison
-    fast_intervals = [(_datetime_to_tuple(s), _datetime_to_tuple(e)) for s, e in intervals]
+    # Convert intervals to byte strings for direct comparison
+    fast_intervals = [(_datetime_to_tick_ts_bytes(s), _datetime_to_tick_ts_bytes(e)) for s, e in intervals]
 
     interval_idx = 0
     num_intervals = len(fast_intervals)
-    prev_tick_tuple = None
+    prev_ts = None
     ticks_written = 0
+    line_num = 0
     last_refresh = 0.0
     start_time = time.monotonic()
 
-    with open(tick_file, "r", encoding="utf-8") as fin, \
-         open(output_file, "w", encoding="utf-8", newline="") as fout:
-        line_num = 0
-        while True:
-            line = fin.readline()
-            if not line:
-                break
-            line_num += 1
-            stripped = line.rstrip("\n\r")
-            if not stripped:
-                continue
+    CHUNK_SIZE = 8 * 1024 * 1024
+    leftover = b""
+    done = False
 
-            semi_pos = stripped.index(";")
-            ts_str = stripped[:semi_pos]
-            tick_tuple = _parse_tick_ts_fast(ts_str)
-
-            if prev_tick_tuple is not None and tick_tuple < prev_tick_tuple:
-                raise ValueError(
-                    f"Tick data is not sorted: line {line_num} timestamp "
-                    f"{ts_str} is before previous"
-                )
-            prev_tick_tuple = tick_tuple
-
-            # Progress display (time-gated)
-            if show_progress and file_size > 0:
-                now = time.monotonic()
-                if now - last_refresh >= 1.0:
-                    last_refresh = now
-                    byte_pos = fin.tell()
-                    percent = min(byte_pos / file_size * 100, 100.0)
-                    current_date_str = f"{tick_tuple[0]}-{tick_tuple[1]:02d}-{tick_tuple[2]:02d}"
-                    if first_date:
-                        day_num = (date(tick_tuple[0], tick_tuple[1], tick_tuple[2]) - first_date).days + 1
-                    else:
-                        day_num = 0
-                    bar = _format_progress_bar(percent, current_date_str, day_num, total_days)
-                    sys.stderr.write(bar)
-                    sys.stderr.flush()
-
-            # Advance past intervals that end before this tick
-            while interval_idx < num_intervals and tick_tuple > fast_intervals[interval_idx][1]:
-                interval_idx += 1
-
-            if interval_idx >= num_intervals:
+    with open(tick_file, "rb") as fin, open(output_file, "wb") as fout:
+        while not done:
+            chunk = fin.read(CHUNK_SIZE)
+            if not chunk:
+                # Process final leftover if file doesn't end with newline
+                if leftover:
+                    stripped = leftover.rstrip(b"\r\n")
+                    if len(stripped) >= 23:
+                        line_num += 1
+                        ts = stripped[:23]
+                        if prev_ts is not None and ts < prev_ts:
+                            raise ValueError(
+                                f"Tick data is not sorted: line {line_num} timestamp "
+                                f"{ts.decode('ascii')} is before previous"
+                            )
+                        ok = True
+                        if max_ts and ts > max_ts:
+                            ok = False
+                        if min_ts and ts < min_ts:
+                            ok = False
+                        if ok:
+                            while interval_idx < num_intervals and ts > fast_intervals[interval_idx][1]:
+                                interval_idx += 1
+                            if interval_idx < num_intervals and ts >= fast_intervals[interval_idx][0]:
+                                fout.write(stripped + b"\n")
+                                ticks_written += 1
                 break
 
-            if tick_tuple >= fast_intervals[interval_idx][0]:
-                fout.write(line)
-                ticks_written += 1
+            data = leftover + chunk
+            lines = data.split(b"\n")
+            leftover = lines[-1]
+
+            for raw_line in lines[:-1]:
+                line_num += 1
+                # Skip lines shorter than a timestamp (23 chars: "YYYY.MM.DD HH:MM:SS.mmm")
+                # or starting with a non-digit (e.g. CSV header line)
+                if len(raw_line) < 23 or not (0x30 <= raw_line[0] <= 0x39):  # 0x30='0', 0x39='9'
+                    continue
+
+                ts = raw_line[:23]
+
+                if prev_ts is not None and ts < prev_ts:
+                    raise ValueError(
+                        f"Tick data is not sorted: line {line_num} timestamp "
+                        f"{ts.decode('ascii')} is before previous"
+                    )
+                prev_ts = ts
+
+                if max_ts and ts > max_ts:
+                    done = True
+                    break
+
+                # Progress display (time-gated)
+                if show_progress and file_size > 0:
+                    now = time.monotonic()
+                    if now - last_refresh >= 1.0:
+                        last_refresh = now
+                        byte_pos = fin.tell() - len(leftover)
+                        percent = min(byte_pos / file_size * 100, 100.0)
+                        date_bytes = ts[:10]
+                        current_date_str = date_bytes.decode("ascii").replace(".", "-")
+                        if first_date:
+                            day_num = (date(int(date_bytes[:4]), int(date_bytes[5:7]), int(date_bytes[8:10])) - first_date).days + 1
+                        else:
+                            day_num = 0
+                        bar = _format_progress_bar(percent, current_date_str, day_num, total_days)
+                        sys.stderr.write(bar)
+                        sys.stderr.flush()
+
+                if min_ts and ts < min_ts:
+                    continue
+
+                while interval_idx < num_intervals and ts > fast_intervals[interval_idx][1]:
+                    interval_idx += 1
+
+                if interval_idx >= num_intervals:
+                    done = True
+                    break
+
+                if ts >= fast_intervals[interval_idx][0]:
+                    fout.write(raw_line.rstrip(b"\r") + b"\n")
+                    ticks_written += 1
 
     if show_progress:
         elapsed = time.monotonic() - start_time
-        # Clear progress line and print summary
         sys.stderr.write("\r" + " " * 100 + "\r")
         sys.stderr.write(f"\033[1;32mDone.\033[0m {ticks_written} ticks written in {elapsed:.1f}s.\n")
         sys.stderr.flush()
 
 
-def default_output_path(tick_data_file):
+def default_output_path(tick_data_file, min_date=None, max_date=None):
     root, ext = os.path.splitext(tick_data_file)
-    return root + "_filtered" + ext
+
+    start_date = min_date
+    end_date = max_date
+
+    if start_date is None:
+        with open(tick_data_file, "r", encoding="utf-8") as f:
+            first_line = f.readline().strip()
+            if _is_header_line(first_line):
+                first_line = f.readline().strip()
+        if first_line:
+            start_date = parse_tick_timestamp(first_line[:first_line.index(";")]).date()
+
+    if end_date is None:
+        last_line = _read_last_line(tick_data_file)
+        if last_line:
+            end_date = parse_tick_timestamp(last_line[:last_line.index(";")]).date()
+
+    date_suffix = ""
+    if start_date and end_date:
+        date_suffix = f"_{start_date}-{end_date}"
+    elif start_date:
+        date_suffix = f"_{start_date}"
+    elif end_date:
+        date_suffix = f"_{end_date}"
+
+    return root + "_filtered" + date_suffix + ext
 
 
 def main():
@@ -235,10 +316,15 @@ def main():
     parser.add_argument("-include_med", choices=["yes", "no"], default="no", help="Include medium impact events (default: no)")
     parser.add_argument("-include_low", choices=["yes", "no"], default="no", help="Include low impact events (default: no)")
     parser.add_argument("-output_path", default=None, help="Output file path (default: <tick_data_file>_filtered.csv)")
+    parser.add_argument("-min_date", default=None, help="Minimum date to include (YYYY-MM-DD, inclusive)")
+    parser.add_argument("-max_date", default=None, help="Maximum date to include (YYYY-MM-DD, inclusive)")
 
     args = parser.parse_args()
 
-    output_path = args.output_path if args.output_path else default_output_path(args.tick_data_file)
+    min_date = datetime.strptime(args.min_date, "%Y-%m-%d").date() if args.min_date else None
+    max_date = datetime.strptime(args.max_date, "%Y-%m-%d").date() if args.max_date else None
+
+    output_path = args.output_path if args.output_path else default_output_path(args.tick_data_file, min_date, max_date)
 
     events = parse_forex_factory_events(
         args.forex_factory_history,
@@ -249,7 +335,7 @@ def main():
 
     intervals = build_intervals(events, args.seconds_before, args.seconds_after)
 
-    filter_ticks(args.tick_data_file, output_path, intervals)
+    filter_ticks(args.tick_data_file, output_path, intervals, min_date=min_date, max_date=max_date)
 
 
 if __name__ == "__main__":
