@@ -25,23 +25,90 @@ from os import getcwd
 import undetected_chromedriver as uc
 from dateutil.tz import gettz
 from bs4 import BeautifulSoup
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException, SessionNotCreatedException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-def setup_driver():
-    """Setup the firefox geckodriver to be headless.
+def get_chrome_major_version():
+    """Detect the major version of the locally installed Google Chrome.
+
+    Tries the Windows registry first, then falls back to querying the Chrome
+    executable directly. Returns None if the version cannot be determined, in
+    which case undetected_chromedriver will attempt its own auto-detection.
 
     Returns:
-        selenium.webdriver.Firefox: The setup geckodriver.
+        int | None: The Chrome major version (e.g. 149) or None.
     """
-    options = uc.ChromeOptions()
-    # options.headless = True
-    options.add_argument('--no-first-run --no-service-autorun --password-store=basic ')
-    return uc.Chrome(version_main=146, options=options)
+    # Try the Windows registry (most reliable on Windows).
+    try:
+        import winreg
+        for hive in (winreg.HKEY_CURRENT_USER, winreg.HKEY_LOCAL_MACHINE):
+            try:
+                key = winreg.OpenKey(hive, r'Software\Google\Chrome\BLBeacon')
+                version, _ = winreg.QueryValueEx(key, 'version')
+                winreg.CloseKey(key)
+                return int(version.split('.')[0])
+            except OSError:
+                continue
+    except ImportError:
+        pass  # Not on Windows.
+
+    # Fall back to asking the Chrome executable for its version.
+    import shutil
+    import subprocess
+    candidates = [
+        shutil.which('chrome'),
+        shutil.which('google-chrome'),
+        r'C:\Program Files\Google\Chrome\Application\chrome.exe',
+        r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
+    ]
+    for chrome_path in candidates:
+        if not chrome_path or not path.exists(chrome_path):
+            continue
+        try:
+            output = subprocess.check_output(
+                [chrome_path, '--version'], stderr=subprocess.STDOUT, text=True
+            )
+            match = re.search(r'(\d+)\.\d+\.\d+\.\d+', output)
+            if match:
+                return int(match.group(1))
+        except (subprocess.SubprocessError, OSError):
+            continue
+
+    return None
+
+
+def setup_driver():
+    """Setup the undetected chromedriver matching the installed Chrome version.
+
+    The Chrome major version is auto-detected so the script keeps working when
+    Chrome updates. If detection or the initial launch fails because of a
+    version mismatch, the version is parsed from the error message and the
+    launch is retried once.
+
+    Returns:
+        undetected_chromedriver.Chrome: The setup chromedriver.
+    """
+    def _build_options():
+        options = uc.ChromeOptions()
+        # options.headless = True
+        options.add_argument('--no-first-run --no-service-autorun --password-store=basic ')
+        return options
+
+    version_main = get_chrome_major_version()
+    try:
+        return uc.Chrome(version_main=version_main, options=_build_options())
+    except SessionNotCreatedException as exc:
+        # Parse the actual browser version from the error and retry once.
+        match = re.search(r'Current browser version is (\d+)', str(exc))
+        if not match:
+            raise
+        detected = int(match.group(1))
+        print(f'Chrome version mismatch; retrying with version_main={detected}.')
+        return uc.Chrome(version_main=detected, options=_build_options())
 
 
 def get_timezone(driver):
