@@ -91089,3 +91089,406 @@
 2026-10-01 19:00:00+00:00,USD,Low Impact Expected,FOMC Member Bowman Speaks,,,
 2026-10-01 19:05:00+00:00,CAD,Low Impact Expected,Gov Council Member Rogers Speaks,,,
 2026-10-01 19:30:00+00:00,USD,Low Impact Expected,FOMC Member Cook Speaks,,,
+2026-10-01 21:59:59+00:00,CNY,Non-Economic,Bank Holiday,,,
+2026-10-01 21:59:59+00:00,USD,Low Impact Expected,Omdia Total Vehicle Sales,16.0M,16.3M,16.8M
+2026-10-02 21:59:59+00:00,CNY,Non-Economic,Bank Holiday,,,
+2026-10-02 07:00:00+00:00,EUR,Low Impact Expected,Spanish Unemployment Change,23.6K,17.6K,44.4K
+2026-10-02 08:00:00+00:00,EUR,Low Impact Expected,Italian Retail Sales m/m,0.3%,-0.1%,-0.4%
+2026-10-02 09:00:00+00:00,EUR,Medium Impact Expected,Core CPI Flash Estimate y/y,2.5%,2.5%,2.4%
+2026-10-02 09:00:00+00:00,EUR,Medium Impact Expected,CPI Flash Estimate y/y,3.8%,3.7%,3.2%
+2026-10-02 12:30:00+00:00,USD,High Impact Expected,Average Hourly Earnings m/m,0.1%,0.3%,0.3%
+2026-10-02 12:30:00+00:00,USD,High Impact Expected,Non-Farm Employment Change,29K,89K,133K
+2026-10-02 12:30:00+00:00,USD,High Impact Expected,Unemployment Rate,4.2%,4.1%,4.1%
+2026-10-02 14:00:00+00:00,USD,Low Impact Expected,Factory Orders m/m,0.1%,0.1%,0.8%
+2026-10-02 14:00:00+00:00,USD,Low Impact Expected,FOMC Member Logan Speaks,,,
+2026-10-02 17:00:00+00:00,USD,Low Impact Expected,FOMC Member Goolsbee Speaks,,,
+2026-10-02 19:35:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-10-03 16:00:00+00:00,AUD,Non-Economic,Daylight Saving Time Shift,,,
+2026-10-04 21:59:59+00:00,All,Medium Impact Expected,OPEC-JMMC Meetings,,,
+2026-10-04 21:59:59+00:00,AUD,Non-Economic,Bank Holiday,,,
+2026-10-05 21:59:59+00:00,CNY,Non-Economic,Bank Holiday,,,
+2026-10-05 00:00:00+00:00,AUD,Low Impact Expected,MI Inflation Gauge m/m,0.3%,,0.5%
+2026-10-05 00:00:00+00:00,NZD,Low Impact Expected,ANZ Commodity Prices m/m,0.6%,,-0.4%
+2026-10-05 05:00:00+00:00,JPY,Low Impact Expected,Consumer Confidence,35.4,35.3,35.5
+2026-10-05 07:15:00+00:00,EUR,Low Impact Expected,Spanish Services PMI,58.3,57.1,57.8
+2026-10-05 07:45:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-10-05 07:45:00+00:00,EUR,Low Impact Expected,Italian Services PMI,51.7,54.6,55.2
+2026-10-05 07:50:00+00:00,EUR,Low Impact Expected,French Final Services PMI,51.2,51.4,51.4
+2026-10-05 07:55:00+00:00,EUR,Low Impact Expected,German Final Services PMI,52.9,52.9,52.9
+2026-10-05 08:00:00+00:00,EUR,Low Impact Expected,Final Services PMI,53.0,53.0,53.0
+2026-10-05 08:30:00+00:00,EUR,Low Impact Expected,Sentix Investor Confidence,2.7,4.5,5.1
+2026-10-05 08:30:00+00:00,GBP,Low Impact Expected,Final Services PMI,52.1,51.7,51.7
+2026-10-05 09:00:00+00:00,EUR,Low Impact Expected,PPI m/m,1.9%,1.9%,1.6%
+2026-10-05 13:45:00+00:00,USD,Low Impact Expected,Final Services PMI,58.8,58.7,58.7
+2026-10-05 14:00:00+00:00,USD,Medium Impact Expected,ISM Services PMI,54.9,55.1,55.4
+2026-10-05 21:00:00+00:00,NZD,Low Impact Expected,NZIER Business Confidence,43,,8
+2026-10-06 21:59:59+00:00,CNY,Non-Economic,Bank Holiday,,,
+2026-10-05 23:30:00+00:00,AUD,Low Impact Expected,Westpac Consumer Sentiment,-4.7%,,-5.2%
+2026-10-06 00:30:00+00:00,AUD,Low Impact Expected,ANZ Job Advertisements m/m,2.2%,,2.6%
+2026-10-06 03:35:00+00:00,JPY,Low Impact Expected,10-y Bond Auction,3.10|3.8,,3.00|3.3
+2026-10-06 06:00:00+00:00,EUR,Low Impact Expected,German Factory Orders m/m,-10.6%,-0.9%,3.2%
+2026-10-06 06:35:00+00:00,JPY,High Impact Expected,BOJ Gov Ueda Speaks,,,
+2026-10-06 06:45:00+00:00,EUR,Low Impact Expected,French Gov Budget Balance,-159.6B,,-145.9B
+2026-10-06 06:45:00+00:00,EUR,Low Impact Expected,French Industrial Production m/m,-0.3%,0.2%,-0.6%
+2026-10-06 07:00:00+00:00,CHF,Low Impact Expected,Unemployment Rate,3.1%,3.1%,3.1%
+2026-10-06 08:30:00+00:00,GBP,Low Impact Expected,Construction PMI,46.1,45.0,44.3
+2026-10-06 08:30:00+00:00,GBP,Low Impact Expected,Housing Equity Withdrawal q/q,-6.8B,-11.9B,-10.6B
+2026-10-06 08:30:00+00:00,GBP,Low Impact Expected,MPC Member Mann Speaks,,,
+2026-10-06 09:00:00+00:00,EUR,Low Impact Expected,Retail Sales m/m,0.1%,0.2%,-0.6%
+2026-10-06 12:15:00+00:00,USD,Low Impact Expected,ADP Weekly Employment Change,23.8K,,22.5K
+2026-10-06 12:30:00+00:00,CAD,Low Impact Expected,Trade Balance,4.2B,1.5B,0.8B
+2026-10-06 12:30:00+00:00,USD,Low Impact Expected,Trade Balance,-105.6B,-100.8B,-92.8B
+2026-10-06 14:00:00+00:00,CAD,Medium Impact Expected,Ivey PMI,58.2,65.2,64.3
+2026-10-06 14:01:00+00:00,USD,Low Impact Expected,RCM/TIPP Economic Optimism,46.8,44.5,45.6
+2026-10-06 14:45:00+00:00,USD,Low Impact Expected,FOMC Member Bowman Speaks,,,
+2026-10-06 15:46:00+00:00,NZD,Low Impact Expected,GDT Price Index,1.2%,,-1.1%
+2026-10-06 17:15:00+00:00,USD,Low Impact Expected,FOMC Member Schmid Speaks,,,
+2026-10-06 20:30:00+00:00,USD,Low Impact Expected,API Weekly Statistical Bulletin,,,
+2026-10-07 21:59:59+00:00,CNY,Non-Economic,Bank Holiday,,,
+2026-10-06 23:30:00+00:00,JPY,Low Impact Expected,Average Cash Earnings y/y,3.8%,3.7%,4.3%
+2026-10-07 05:00:00+00:00,JPY,Low Impact Expected,Leading Indicators,118.0%,118.1%,117.7%
+2026-10-07 06:00:00+00:00,EUR,Low Impact Expected,German Industrial Production m/m,2.0%,0.5%,-1.2%
+2026-10-07 06:00:00+00:00,GBP,Low Impact Expected,Lloyds HPI m/m,0.0%,0.0%,-0.3%
+2026-10-07 06:45:00+00:00,EUR,Low Impact Expected,French Trade Balance,-6.1B,-6.5B,-6.6B
+2026-10-07 07:00:00+00:00,CHF,Low Impact Expected,Foreign Currency Reserves,770B,,770B
+2026-10-07 14:30:00+00:00,USD,Low Impact Expected,Crude Oil Inventories,-3.2M,1.9M,0.9M
+2026-10-07 17:00:00+00:00,USD,Medium Impact Expected,President Trump Speaks,,,
+2026-10-07 17:01:00+00:00,USD,Low Impact Expected,10-y Bond Auction,5.30|2.8,,4.83|2.7
+2026-10-07 18:00:00+00:00,USD,High Impact Expected,FOMC Meeting Minutes,,,
+2026-10-07 19:00:00+00:00,USD,Low Impact Expected,Consumer Credit m/m,8.3B,14.5B,17.7B
+2026-10-07 23:01:00+00:00,GBP,Low Impact Expected,RICS House Price Balance,-32%,-30%,-28%
+2026-10-07 23:50:00+00:00,JPY,Low Impact Expected,Current Account,2.98T,2.14T,2.52T
+2026-10-08 00:00:00+00:00,AUD,Low Impact Expected,MI Inflation Expectations,5.3%,,4.9%
+2026-10-08 03:35:00+00:00,JPY,Low Impact Expected,30-y Bond Auction,4.11|3.9,,4.08|3.8
+2026-10-08 05:00:00+00:00,JPY,Low Impact Expected,Economy Watchers Sentiment,47.0,46.7,46.4
+2026-10-08 06:00:00+00:00,EUR,Low Impact Expected,German Trade Balance,19.5B,19.0B,21.6B
+2026-10-08 08:05:00+00:00,CHF,Low Impact Expected,Gov Board Member Martin Speaks,,,
+2026-10-08 08:30:00+00:00,GBP,Low Impact Expected,BOE Credit Conditions Survey,,,
+2026-10-08 08:30:00+00:00,USD,Medium Impact Expected,FOMC Member Waller Speaks,,,
+2026-10-08 09:00:00+00:00,GBP,Low Impact Expected,MPC Member Pill Speaks,,,
+2026-10-08 09:15:00+00:00,GBP,Low Impact Expected,MPC Member Greene Speaks,,,
+2026-10-08 21:59:59+00:00,EUR,Low Impact Expected,Eurogroup Meetings,,,
+2026-10-08 11:30:00+00:00,EUR,Low Impact Expected,ECB Monetary Policy Meeting Accounts,,,
+2026-10-08 12:15:00+00:00,GBP,High Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-08 12:30:00+00:00,USD,Medium Impact Expected,Unemployment Claims,197K,200K,199K
+2026-10-08 13:00:00+00:00,GBP,Low Impact Expected,MPC Member Lombardelli Speaks,,,
+2026-10-08 14:00:00+00:00,USD,Low Impact Expected,Final Wholesale Inventories m/m,0.5%,0.7%,0.7%
+2026-10-08 14:30:00+00:00,USD,Low Impact Expected,Natural Gas Storage,85B,79B,64B
+2026-10-08 17:01:00+00:00,USD,Low Impact Expected,30-y Bond Auction,5.62|2.5,,5.31|2.6
+2026-10-08 17:40:00+00:00,USD,Low Impact Expected,FOMC Member Musalem Speaks,,,
+2026-10-08 23:30:00+00:00,JPY,Low Impact Expected,Household Spending y/y,-3.1%,-3.5%,-3.6%
+2026-10-09 06:00:00+00:00,JPY,Low Impact Expected,Prelim Machine Tool Orders y/y,60.4%,,64.7%
+2026-10-09 07:00:00+00:00,CHF,Low Impact Expected,SECO Consumer Climate,-36,-32,-33
+2026-10-09 08:00:00+00:00,EUR,Low Impact Expected,Italian Industrial Production m/m,-1.3%,0.0%,0.6%
+2026-10-09 21:59:59+00:00,EUR,Low Impact Expected,ECOFIN Meetings,,,
+2026-10-09 12:30:00+00:00,CAD,High Impact Expected,Employment Change,-68.3K,6.1K,-41.7K
+2026-10-09 12:30:00+00:00,CAD,High Impact Expected,Unemployment Rate,6.5%,6.5%,6.4%
+2026-10-09 14:00:00+00:00,USD,Medium Impact Expected,Prelim UoM Consumer Sentiment,46.3,47.5,48.1
+2026-10-09 14:00:00+00:00,USD,Medium Impact Expected,Prelim UoM Inflation Expectations,4.7%,,4.6%
+2026-10-09 20:00:00+00:00,USD,Low Impact Expected,FOMC Member Collins Speaks,,,
+2026-10-09 21:59:59+00:00,EUR,Low Impact Expected,ECOFIN Meetings,,,
+2026-10-12 21:59:59+00:00,JPY,Non-Economic,Bank Holiday,,,
+2026-10-12 09:30:00+00:00,GBP,Low Impact Expected,MPC Member Breeden Speaks,,,
+2026-10-12 21:59:59+00:00,USD,Non-Economic,Bank Holiday,,,
+2026-10-12 21:59:59+00:00,CAD,Non-Economic,Bank Holiday,,,
+2026-10-12 12:50:00+00:00,GBP,Low Impact Expected,MPC Member Mann Speaks,,,
+2026-10-12 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-12 16:10:00+00:00,USD,Low Impact Expected,FOMC Member Hammack Speaks,,,
+2026-10-12 23:01:00+00:00,GBP,Low Impact Expected,BRC Retail Sales Monitor y/y,1.0%,0.8%,0.5%
+2026-10-12 23:50:00+00:00,JPY,Low Impact Expected,Bank Lending y/y,5.3%,5.5%,5.3%
+2026-10-12 23:50:00+00:00,JPY,Low Impact Expected,PPI y/y,6.8%,7.6%,7.6%
+2026-10-13 00:30:00+00:00,AUD,Low Impact Expected,Monetary Policy Meeting Minutes,,,
+2026-10-13 00:30:00+00:00,AUD,Low Impact Expected,NAB Business Confidence,-13,,-9
+2026-10-13 03:00:00+00:00,GBP,Low Impact Expected,MPC Member Greene Speaks,,,
+2026-10-13 06:00:00+00:00,EUR,Low Impact Expected,German Final CPI m/m,0.6%,0.6%,0.6%
+2026-10-13 07:45:00+00:00,USD,Low Impact Expected,FOMC Member Waller Speaks,,,
+2026-10-13 10:00:00+00:00,USD,Low Impact Expected,NFIB Small Business Index,97.9,98.1,98.7
+2026-10-13 12:15:00+00:00,USD,Low Impact Expected,ADP Weekly Employment Change,24.8K,,25.3K
+2026-10-13 14:00:00+00:00,USD,Low Impact Expected,Existing Home Sales,3.99M,3.95M,3.93M
+2026-10-13 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-13 14:30:00+00:00,AUD,Low Impact Expected,CB Leading Index m/m,-0.3%,,0.5%
+2026-10-13 17:00:00+00:00,USD,Low Impact Expected,FOMC Member Barkin Speaks,,,
+2026-10-13 20:00:00+00:00,USD,Low Impact Expected,FOMC Member Collins Speaks,,,
+2026-10-13 21:45:00+00:00,NZD,Low Impact Expected,Visitor Arrivals m/m,2.8%,,0.7%
+2026-10-13 23:30:00+00:00,AUD,Low Impact Expected,MI Leading Index m/m,-0.1%,,0.0%
+2026-10-13 23:50:00+00:00,JPY,Low Impact Expected,M2 Money Stock y/y,2.0%,2.1%,2.0%
+2026-10-14 01:30:00+00:00,CNY,Low Impact Expected,CPI y/y,0.9%,1.0%,0.8%
+2026-10-14 01:30:00+00:00,CNY,Low Impact Expected,PPI y/y,5.0%,4.4%,3.8%
+2026-10-14 02:10:00+00:00,EUR,Medium Impact Expected,ECB President Lagarde Speaks,,,
+2026-10-14 02:31:00+00:00,CNY,Low Impact Expected,Trade Balance,906B,790B,809B
+2026-10-14 02:31:00+00:00,CNY,Low Impact Expected,USD-Denominated Trade Balance,133.5B,116.8B,119.1B
+2026-10-14 03:30:00+00:00,GBP,Low Impact Expected,MPC Member Breeden Speaks,,,
+2026-10-14 05:30:00+00:00,GBP,Medium Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-14 06:00:00+00:00,EUR,Low Impact Expected,German WPI m/m,1.9%,0.6%,0.9%
+2026-10-14 06:00:00+00:00,GBP,Low Impact Expected,MPC Member Pill Speaks,,,
+2026-10-14 06:05:00+00:00,CAD,Medium Impact Expected,BOC Gov Macklem Speaks,,,
+2026-10-14 08:30:00+00:00,EUR,Medium Impact Expected,ECB President Lagarde Speaks,,,
+2026-10-14 09:00:00+00:00,CNY,Low Impact Expected,M2 Money Supply y/y,7.2%,7.4%,7.5%
+2026-10-14 09:01:00+00:00,CNY,Low Impact Expected,New Loans,1080B,1025B,60B
+2026-10-14 09:38:00+00:00,EUR,Low Impact Expected,German 30-y Bond Auction,3.80|1.4,,3.80|1.6
+2026-10-14 09:40:00+00:00,USD,Low Impact Expected,FOMC Member Bowman Speaks,,,
+2026-10-14 21:59:59+00:00,EUR,Medium Impact Expected,EU Economic Summit,,,
+2026-10-14 12:30:00+00:00,CAD,Low Impact Expected,Building Permits m/m,8.8%,2.9%,-15.8%
+2026-10-14 12:30:00+00:00,USD,High Impact Expected,Core CPI m/m,0.3%,0.2%,0.3%
+2026-10-14 12:30:00+00:00,USD,High Impact Expected,Core CPI y/y,2.6%,2.5%,2.4%
+2026-10-14 12:30:00+00:00,USD,High Impact Expected,CPI m/m,0.6%,0.6%,0.4%
+2026-10-14 12:30:00+00:00,USD,High Impact Expected,CPI y/y,3.7%,3.6%,3.4%
+2026-10-14 13:30:00+00:00,GBP,Low Impact Expected,CB Leading Index m/m,-0.1%,,-0.1%
+2026-10-14 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-14 17:30:00+00:00,USD,Low Impact Expected,FOMC Member Barkin Speaks,,,
+2026-10-14 18:00:00+00:00,USD,Low Impact Expected,Beige Book,,,
+2026-10-14 19:00:00+00:00,USD,Low Impact Expected,FOMC Member Goolsbee Speaks,,,
+2026-10-14 20:30:00+00:00,USD,Low Impact Expected,API Weekly Statistical Bulletin,,,
+2026-10-14 23:50:00+00:00,JPY,Low Impact Expected,Core Machinery Orders m/m,5.2%,2.2%,-3.7%
+2026-10-15 00:30:00+00:00,AUD,High Impact Expected,Employment Change,-39.3K,19.6K,29.3K
+2026-10-15 00:30:00+00:00,AUD,High Impact Expected,Unemployment Rate,4.7%,4.6%,4.7%
+2026-10-15 02:55:00+00:00,USD,Low Impact Expected,FOMC Member Bowman Speaks,,,
+2026-10-15 03:35:00+00:00,GBP,Low Impact Expected,MPC Member Pill Speaks,,,
+2026-10-15 04:30:00+00:00,AUD,Low Impact Expected,RBA Annual Report,,,
+2026-10-15 04:30:00+00:00,CHF,Medium Impact Expected,SNB Chairman Schlegel Speaks,,,
+2026-10-15 04:30:00+00:00,JPY,Low Impact Expected,Revised Industrial Production m/m,-2.4%,-1.7%,-1.7%
+2026-10-15 06:00:00+00:00,GBP,High Impact Expected,GDP m/m,0.1%,-0.1%,0.4%
+2026-10-15 06:00:00+00:00,GBP,Low Impact Expected,Construction Output m/m,-0.2%,0.0%,-0.5%
+2026-10-15 06:00:00+00:00,GBP,Low Impact Expected,Goods Trade Balance,-18.0B,-21.9B,-19.3B
+2026-10-15 06:00:00+00:00,GBP,Low Impact Expected,Index of Services 3m/3m,0.9%,0.8%,0.7%
+2026-10-15 06:00:00+00:00,GBP,Low Impact Expected,Industrial Production m/m,0.8%,-0.1%,0.3%
+2026-10-15 06:00:00+00:00,GBP,Low Impact Expected,Manufacturing Production m/m,1.2%,-0.1%,1.0%
+2026-10-15 06:30:00+00:00,CHF,Low Impact Expected,PPI m/m,0.3%,0.6%,0.7%
+2026-10-15 06:45:00+00:00,EUR,Low Impact Expected,French Final CPI m/m,-0.3%,-0.3%,-0.3%
+2026-10-15 06:45:00+00:00,GBP,Low Impact Expected,MPC Member Greene Speaks,,,
+2026-10-15 07:30:00+00:00,GBP,Medium Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-15 08:45:00+00:00,GBP,Low Impact Expected,MPC Member Breeden Speaks,,,
+2026-10-15 09:00:00+00:00,CAD,Low Impact Expected,Gov Council Member Rogers Speaks,,,
+2026-10-15 09:00:00+00:00,EUR,Low Impact Expected,Industrial Production m/m,-0.5%,0.0%,-0.3%
+2026-10-15 21:59:59+00:00,EUR,Medium Impact Expected,EU Economic Summit,,,
+2026-10-15 12:30:00+00:00,CAD,Low Impact Expected,Manufacturing Sales m/m,1.5%,1.1%,-0.3%
+2026-10-15 12:30:00+00:00,CAD,Low Impact Expected,Wholesale Sales m/m,-1.6%,-1.5%,0.4%
+2026-10-15 12:30:00+00:00,USD,High Impact Expected,Core PPI m/m,0.7%,0.3%,0.2%
+2026-10-15 12:30:00+00:00,USD,High Impact Expected,Core Retail Sales m/m,0.9%,0.6%,1.4%
+2026-10-15 12:30:00+00:00,USD,High Impact Expected,PPI m/m,1.3%,0.6%,0.5%
+2026-10-15 12:30:00+00:00,USD,High Impact Expected,Retail Sales m/m,0.8%,0.3%,1.3%
+2026-10-15 12:30:00+00:00,USD,Medium Impact Expected,Philly Fed Manufacturing Index,20.9,28.2,37.8
+2026-10-15 12:30:00+00:00,USD,Medium Impact Expected,Unemployment Claims,199K,199K,198K
+2026-10-15 12:30:00+00:00,USD,Low Impact Expected,Empire State Manufacturing Index,25.5,12.1,7.6
+2026-10-15 14:00:00+00:00,USD,Low Impact Expected,Business Inventories m/m,0.4%,0.4%,0.9%
+2026-10-15 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-15 14:30:00+00:00,USD,Low Impact Expected,Natural Gas Storage,67B,76B,85B
+2026-10-15 16:00:00+00:00,USD,Low Impact Expected,Crude Oil Inventories,-8.6M,0.2M,-3.2M
+2026-10-15 20:30:00+00:00,USD,Low Impact Expected,FOMC Member Hammack Speaks,,,
+2026-10-15 21:30:00+00:00,NZD,Low Impact Expected,BusinessNZ Manufacturing Index,56.5,,53.3
+2026-10-15 21:45:00+00:00,NZD,Low Impact Expected,FPI m/m,0.0%,,0.3%
+2026-10-16 02:00:00+00:00,GBP,High Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-16 02:30:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-10-16 03:30:00+00:00,USD,High Impact Expected,Fed Chairman Warsh Speaks,,,
+2026-10-16 04:15:00+00:00,CAD,Medium Impact Expected,BOC Gov Macklem Speaks,,,
+2026-10-16 09:00:00+00:00,EUR,Low Impact Expected,Final Core CPI y/y,2.5%,2.5%,2.5%
+2026-10-16 09:00:00+00:00,EUR,Low Impact Expected,Final CPI y/y,3.8%,3.8%,3.8%
+2026-10-16 09:00:00+00:00,EUR,Low Impact Expected,Trade Balance,-6.8B,4.5B,1.4B
+2026-10-16 10:00:00+00:00,EUR,Low Impact Expected,Italian Trade Balance,1.77B,7.50B,8.25B
+2026-10-16 12:00:00+00:00,CAD,Low Impact Expected,Gov Council Member Alexopoulos Speaks,,,
+2026-10-16 12:15:00+00:00,CAD,Low Impact Expected,Housing Starts,249K,234K,242K
+2026-10-16 12:30:00+00:00,CAD,Low Impact Expected,Foreign Securities Purchases,-17.31B,23.59B,20.63B
+2026-10-16 12:30:00+00:00,USD,Low Impact Expected,Import Prices m/m,1.1%,0.9%,0.5%
+2026-10-16 13:15:00+00:00,USD,Low Impact Expected,Capacity Utilization Rate,76.9%,76.5%,76.4%
+2026-10-16 13:15:00+00:00,USD,Low Impact Expected,Industrial Production m/m,0.7%,0.4%,0.1%
+2026-10-16 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-16 18:05:00+00:00,USD,Low Impact Expected,Federal Budget Balance,-26.9B,-34.7B,-166.8B
+2026-10-16 20:00:00+00:00,USD,Low Impact Expected,TIC Long-Term Purchases,279.2B,75.2B,-27.9B
+2026-10-17 04:45:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-10-17 06:45:00+00:00,GBP,Medium Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-17 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-18 21:59:59+00:00,All,Low Impact Expected,IMF Meetings,,,
+2026-10-18 21:30:00+00:00,NZD,Low Impact Expected,BusinessNZ Services Index,50.9,,51.0
+2026-10-18 21:45:00+00:00,NZD,Low Impact Expected,Trade Balance,-1971M,-775M,-1536M
+2026-10-18 23:01:00+00:00,GBP,Low Impact Expected,Rightmove HPI m/m,1.0%,,0.7%
+2026-10-18 23:05:00+00:00,AUD,Low Impact Expected,RBA Assist Gov Kent Speaks,,,
+2026-10-19 01:30:00+00:00,CNY,Low Impact Expected,New Home Prices m/m,-0.14%,,-0.17%
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,Fixed Asset Investment ytd/y,-7.2%,-7.3%,-7.2%
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,GDP q/y,4.5%,4.4%,4.3%
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,Industrial Production y/y,5.5%,5.4%,5.2%
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,NBS Press Conference,,,
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,Retail Sales y/y,1.1%,0.5%,0.4%
+2026-10-19 02:00:00+00:00,CNY,Low Impact Expected,Unemployment Rate,5.2%,5.3%,5.3%
+2026-10-19 04:30:00+00:00,JPY,Low Impact Expected,Tertiary Industry Activity m/m,-0.1%,-0.3%,0.2%
+2026-10-19 12:30:00+00:00,CAD,High Impact Expected,CPI m/m,0.1%,0.2%,-0.1%
+2026-10-19 12:30:00+00:00,CAD,High Impact Expected,Median CPI y/y,1.9%,2.0%,2.0%
+2026-10-19 12:30:00+00:00,CAD,High Impact Expected,Trimmed CPI y/y,1.8%,1.9%,1.9%
+2026-10-19 12:30:00+00:00,CAD,Medium Impact Expected,Common CPI y/y,2.4%,2.6%,2.6%
+2026-10-19 12:30:00+00:00,CAD,Low Impact Expected,Core CPI m/m,0.0%,,0.1%
+2026-10-19 14:00:00+00:00,USD,Low Impact Expected,NAHB Housing Market Index,29,31,32
+2026-10-19 15:30:00+00:00,CAD,Low Impact Expected,BOC Business Outlook Survey,,,
+2026-10-20 01:00:00+00:00,CNY,Low Impact Expected,1-y Loan Prime Rate,3.00%,3.00%,3.00%
+2026-10-20 01:00:00+00:00,CNY,Low Impact Expected,5-y Loan Prime Rate,3.50%,3.50%,3.50%
+2026-10-20 06:00:00+00:00,EUR,Low Impact Expected,German PPI m/m,1.9%,1.5%,1.1%
+2026-10-20 06:00:00+00:00,GBP,Medium Impact Expected,Average Earnings Index 3m/y,3.7%,3.8%,3.9%
+2026-10-20 06:00:00+00:00,GBP,Low Impact Expected,Claimant Count Change,30.3K,19.4K,7.0K
+2026-10-20 06:00:00+00:00,GBP,Low Impact Expected,Unemployment Rate,4.7%,4.9%,4.9%
+2026-10-20 08:00:00+00:00,EUR,Low Impact Expected,Current Account,8.7B,29.2B,27.2B
+2026-10-20 09:00:00+00:00,EUR,Low Impact Expected,German ZEW Economic Sentiment,28.1,30.2,34.7
+2026-10-20 09:00:00+00:00,EUR,Low Impact Expected,ZEW Economic Sentiment,18.5,23.6,25.8
+2026-10-20 09:03:00+00:00,GBP,Low Impact Expected,10-y Bond Auction,5.42|3.6,,5.38|3.3
+2026-10-20 12:15:00+00:00,USD,Low Impact Expected,ADP Weekly Employment Change,18.5K,,26.0K
+2026-10-20 12:30:00+00:00,USD,Low Impact Expected,Building Permits,1.40M,1.39M,1.40M
+2026-10-20 12:30:00+00:00,USD,Low Impact Expected,Housing Starts,1.22M,1.30M,1.29M
+2026-10-20 14:00:00+00:00,USD,Low Impact Expected,Pending Home Sales m/m,-7.3%,-0.6%,0.3%
+2026-10-20 15:19:00+00:00,NZD,Low Impact Expected,GDT Price Index,2.5%,,1.2%
+2026-10-20 17:00:00+00:00,GBP,Low Impact Expected,MPC Member Greene Speaks,,,
+2026-10-20 20:30:00+00:00,USD,Low Impact Expected,API Weekly Statistical Bulletin,,,
+2026-10-20 22:30:00+00:00,AUD,Low Impact Expected,RBA Deputy Gov Hauser Speaks,,,
+2026-10-20 23:50:00+00:00,JPY,Low Impact Expected,Trade Balance,-0.70T,-0.26T,-0.80T
+2026-10-21 02:00:00+00:00,NZD,Low Impact Expected,Credit Card Spending y/y,6.9%,,3.6%
+2026-10-21 06:00:00+00:00,GBP,High Impact Expected,CPI y/y,3.5%,3.4%,3.1%
+2026-10-21 06:00:00+00:00,GBP,Low Impact Expected,Core CPI y/y,2.8%,2.8%,2.6%
+2026-10-21 06:00:00+00:00,GBP,Low Impact Expected,PPI Input m/m,1.5%,1.3%,0.5%
+2026-10-21 06:00:00+00:00,GBP,Low Impact Expected,PPI Output m/m,0.8%,0.7%,0.7%
+2026-10-21 06:00:00+00:00,GBP,Low Impact Expected,Public Sector Net Borrowing,24.5B,23.8B,17.3B
+2026-10-21 06:00:00+00:00,GBP,Low Impact Expected,RPI y/y,3.9%,3.9%,3.4%
+2026-10-21 07:15:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-10-21 08:30:00+00:00,GBP,Low Impact Expected,HPI y/y,0.9%,1.2%,1.2%
+2026-10-21 10:00:00+00:00,EUR,Low Impact Expected,German Buba Monthly Report,,,
+2026-10-21 13:00:00+00:00,GBP,Medium Impact Expected,BOE Gov Bailey Speaks,,,
+2026-10-21 14:30:00+00:00,USD,Low Impact Expected,Crude Oil Inventories,-3.1M,-0.1M,-8.6M
+2026-10-21 21:45:00+00:00,NZD,High Impact Expected,CPI q/q,0.7%,0.8%,1.5%
+2026-10-22 07:30:00+00:00,CHF,Low Impact Expected,Summary of Monetary Policy Discussions,,,
+2026-10-22 07:41:00+00:00,CNY,Low Impact Expected,Foreign Direct Investment ytd/y,-4.3%,,-5.3%
+2026-10-22 10:00:00+00:00,GBP,Low Impact Expected,CBI Industrial Order Expectations,-32,-20,-9
+2026-10-22 12:30:00+00:00,USD,Medium Impact Expected,Unemployment Claims,194K,200K,200K
+2026-10-22 12:38:00+00:00,CAD,Low Impact Expected,IPPI m/m,2.0%,0.9%,1.2%
+2026-10-22 12:38:00+00:00,CAD,Low Impact Expected,RMPI m/m,4.8%,3.1%,3.3%
+2026-10-22 13:55:00+00:00,CAD,Low Impact Expected,NHPI m/m,-0.2%,-0.1%,-0.1%
+2026-10-22 14:00:00+00:00,EUR,Low Impact Expected,Consumer Confidence,-18,-17,-17
+2026-10-22 14:00:00+00:00,USD,Low Impact Expected,CB Leading Index m/m,0.0%,-0.1%,-0.1%
+2026-10-22 14:30:00+00:00,USD,Low Impact Expected,Natural Gas Storage,77B,80B,67B
+2026-10-22 22:00:00+00:00,AUD,Low Impact Expected,Flash Manufacturing PMI,49.7,,49.6
+2026-10-22 22:00:00+00:00,AUD,Low Impact Expected,Flash Services PMI,47.8,,51.9
+2026-10-22 23:01:00+00:00,GBP,Low Impact Expected,GfK Consumer Confidence,-24,-14,-13
+2026-10-22 23:30:00+00:00,JPY,Low Impact Expected,National Core CPI y/y,2.1%,2.1%,1.7%
+2026-10-23 00:30:00+00:00,JPY,Low Impact Expected,Flash Manufacturing PMI,53.3,54.5,54.1
+2026-10-23 06:00:00+00:00,GBP,Medium Impact Expected,Retail Sales m/m,-0.4%,-0.1%,0.7%
+2026-10-23 07:15:00+00:00,EUR,Medium Impact Expected,French Flash Manufacturing PMI,49.3,50.5,50.6
+2026-10-23 07:15:00+00:00,EUR,Medium Impact Expected,French Flash Services PMI,48.4,50.7,51.2
+2026-10-23 07:30:00+00:00,EUR,Medium Impact Expected,German Flash Manufacturing PMI,54.2,53.5,53.9
+2026-10-23 07:30:00+00:00,EUR,Medium Impact Expected,German Flash Services PMI,51.7,52.5,52.9
+2026-10-23 08:00:00+00:00,EUR,Low Impact Expected,Flash Manufacturing PMI,52.4,52.7,52.9
+2026-10-23 08:00:00+00:00,EUR,Low Impact Expected,Flash Services PMI,51.7,52.6,53.0
+2026-10-23 08:30:00+00:00,GBP,Medium Impact Expected,Flash Manufacturing PMI,52.8,51.8,51.9
+2026-10-23 08:30:00+00:00,GBP,Medium Impact Expected,Flash Services PMI,53.1,51.8,52.1
+2026-10-23 12:30:00+00:00,CAD,Low Impact Expected,Core Retail Sales m/m,1.2%,1.1%,-0.8%
+2026-10-23 12:30:00+00:00,CAD,Low Impact Expected,Retail Sales m/m,1.2%,1.3%,-0.8%
+2026-10-23 13:00:00+00:00,EUR,Low Impact Expected,Belgian NBB Business Climate,-9.8,-11.8,-12.1
+2026-10-23 13:45:00+00:00,USD,Medium Impact Expected,Flash Manufacturing PMI,56.0,55.4,55.9
+2026-10-23 13:45:00+00:00,USD,Medium Impact Expected,Flash Services PMI,57.9,57.9,58.8
+2026-10-23 14:00:00+00:00,USD,Medium Impact Expected,Revised UoM Consumer Sentiment,48.0,46.3,46.3
+2026-10-23 14:00:00+00:00,USD,Medium Impact Expected,Revised UoM Inflation Expectations,4.7%,,4.7%
+2026-10-25 22:59:59+00:00,NZD,Non-Economic,Bank Holiday,,,
+2026-10-25 21:10:00+00:00,AUD,Low Impact Expected,RBA Assist Gov Jones Speaks,,,
+2026-10-26 09:00:00+00:00,EUR,Low Impact Expected,German ifo Business Climate,90.2,90.0,89.9
+2026-10-26 11:00:00+00:00,GBP,Low Impact Expected,CBI Realized Sales,-10,-47,-55
+2026-10-26 23:50:00+00:00,JPY,Low Impact Expected,SPPI y/y,3.7%,3.7%,3.5%
+2026-10-27 00:01:00+00:00,GBP,Low Impact Expected,BRC Shop Price Index y/y,2.1%,1.6%,1.4%
+2026-10-27 05:00:00+00:00,JPY,Low Impact Expected,BOJ Core CPI y/y,2.4%,1.9%,1.8%
+2026-10-27 08:00:00+00:00,EUR,Low Impact Expected,Spanish Unemployment Rate,10.2%,9.9%,9.9%
+2026-10-27 09:00:00+00:00,EUR,Low Impact Expected,M3 Money Supply y/y,3.5%,3.5%,3.5%
+2026-10-27 09:00:00+00:00,EUR,Low Impact Expected,Private Loans y/y,3.1%,3.1%,3.1%
+2026-10-27 12:15:00+00:00,USD,Low Impact Expected,ADP Weekly Employment Change,16.8K,,17.5K
+2026-10-27 12:30:00+00:00,USD,Low Impact Expected,Core Durable Goods Orders m/m,0.5%,0.6%,0.2%
+2026-10-27 12:30:00+00:00,USD,Low Impact Expected,Durable Goods Orders m/m,1.8%,2.0%,-0.1%
+2026-10-27 13:00:00+00:00,USD,Low Impact Expected,HPI m/m,0.3%,0.2%,0.2%
+2026-10-27 13:00:00+00:00,USD,Low Impact Expected,S&P/CS Composite-20 HPI y/y,2.7%,2.6%,2.5%
+2026-10-27 14:00:00+00:00,USD,Medium Impact Expected,CB Consumer Confidence,91.7,81.2,84.2
+2026-10-27 14:00:00+00:00,USD,Low Impact Expected,New Home Sales,676K,651K,680K
+2026-10-27 14:00:00+00:00,USD,Low Impact Expected,Richmond Manufacturing Index,-2,0,-2
+2026-10-27 20:30:00+00:00,USD,Low Impact Expected,API Weekly Statistical Bulletin,,,
+2026-10-28 00:15:00+00:00,AUD,Medium Impact Expected,RBA Gov Bullock Speaks,,,
+2026-10-28 00:30:00+00:00,AUD,High Impact Expected,CPI m/m,0.8%,0.7%,0.4%
+2026-10-28 00:30:00+00:00,AUD,High Impact Expected,CPI y/y,4.3%,4.2%,4.0%
+2026-10-28 00:30:00+00:00,AUD,High Impact Expected,Trimmed Mean CPI m/m,0.3%,0.3%,0.2%
+2026-10-28 01:00:00+00:00,NZD,High Impact Expected,Official Cash Rate,2.75%,3.00%,2.75%
+2026-10-28 01:00:00+00:00,NZD,High Impact Expected,RBNZ Rate Statement,,,
+2026-10-28 02:00:00+00:00,NZD,High Impact Expected,RBNZ Press Conference,,,
+2026-10-28 07:00:00+00:00,EUR,Low Impact Expected,German GfK Consumer Climate,-30.8,-30.1,-30.6
+2026-10-28 09:00:00+00:00,CHF,Low Impact Expected,UBS Economic Expectations,-15.3,,2.6
+2026-10-28 10:32:00+00:00,EUR,Low Impact Expected,German 10-y Bond Auction,3.37|1.1,,3.58|1.2
+2026-10-28 12:30:00+00:00,GBP,High Impact Expected,Annual Budget Release,,,
+2026-10-28 12:30:00+00:00,GBP,Medium Impact Expected,Autumn Forecast Statement,,,
+2026-10-28 12:30:00+00:00,USD,Low Impact Expected,Goods Trade Balance,-134.9B,-130.4B,-132.1B
+2026-10-28 12:30:00+00:00,USD,Low Impact Expected,Prelim Wholesale Inventories m/m,0.6%,0.5%,0.5%
+2026-10-28 13:00:00+00:00,CNY,Low Impact Expected,CB Leading Index m/m,-0.1%,,-0.3%
+2026-10-28 13:45:00+00:00,CAD,High Impact Expected,BOC Monetary Policy Report,,,
+2026-10-28 13:45:00+00:00,CAD,High Impact Expected,BOC Rate Statement,,,
+2026-10-28 13:45:00+00:00,CAD,High Impact Expected,Overnight Rate,2.50%,2.50%,2.25%
+2026-10-28 14:30:00+00:00,CAD,High Impact Expected,BOC Press Conference,,,
+2026-10-28 14:30:00+00:00,USD,Low Impact Expected,Crude Oil Inventories,-1.9M,0.1M,-3.1M
+2026-10-28 18:00:00+00:00,USD,High Impact Expected,Federal Funds Rate,4.00%,4.00%,4.00%
+2026-10-28 18:00:00+00:00,USD,High Impact Expected,FOMC Statement,,,
+2026-10-28 18:30:00+00:00,USD,High Impact Expected,FOMC Press Conference,,,
+2026-10-29 00:00:00+00:00,NZD,Low Impact Expected,ANZ Business Confidence,52.5,,51.9
+2026-10-29 00:30:00+00:00,AUD,Low Impact Expected,Import Prices q/q,-1.1%,1.3%,5.7%
+2026-10-29 05:00:00+00:00,JPY,Low Impact Expected,Consumer Confidence,35.0,35.1,35.4
+2026-10-29 09:00:00+00:00,EUR,Low Impact Expected,Italian Monthly Unemployment Rate,6.3%,6.2%,6.2%
+2026-10-29 09:30:00+00:00,GBP,Low Impact Expected,M4 Money Supply m/m,0.1%,0.3%,0.4%
+2026-10-29 09:30:00+00:00,GBP,Low Impact Expected,Mortgage Approvals,53K,54K,55K
+2026-10-29 09:30:00+00:00,GBP,Low Impact Expected,Net Lending to Individuals m/m,5.8B,6.2B,6.9B
+2026-10-29 10:08:00+00:00,EUR,Low Impact Expected,Italian 10-y Bond Auction,4.49|1.6,,4.58|1.6
+2026-10-29 12:30:00+00:00,USD,High Impact Expected,Advance GDP q/q,3.4%,3.2%,2.2%
+2026-10-29 12:30:00+00:00,USD,High Impact Expected,Core PCE Price Index m/m,0.3%,0.3%,0.3%
+2026-10-29 12:30:00+00:00,USD,Medium Impact Expected,Advance GDP Price Index q/q,2.3%,3.2%,6.1%
+2026-10-29 12:30:00+00:00,USD,Medium Impact Expected,Unemployment Claims,194K,198K,195K
+2026-10-29 12:30:00+00:00,USD,Low Impact Expected,Personal Income m/m,0.2%,0.3%,0.3%
+2026-10-29 12:30:00+00:00,USD,Low Impact Expected,Personal Spending m/m,0.5%,0.6%,0.9%
+2026-10-29 12:50:00+00:00,CAD,Low Impact Expected,Gov Council Member Gravelle Speaks,,,
+2026-10-29 13:15:00+00:00,EUR,High Impact Expected,Main Refinancing Rate,2.65%,2.65%,2.65%
+2026-10-29 13:15:00+00:00,EUR,High Impact Expected,Monetary Policy Statement,,,
+2026-10-29 13:45:00+00:00,EUR,High Impact Expected,ECB Press Conference,,,
+2026-10-29 14:30:00+00:00,USD,Low Impact Expected,Natural Gas Storage,80B,75B,77B
+2026-10-29 15:30:00+00:00,CAD,Low Impact Expected,Gov Council Member Vincent Speaks,,,
+2026-10-29 17:30:00+00:00,CHF,Low Impact Expected,Gov Board Member Tschudin Speaks,,,
+2026-10-29 23:30:00+00:00,JPY,Medium Impact Expected,Tokyo Core CPI y/y,2.6%,2.6%,2.7%
+2026-10-29 23:30:00+00:00,JPY,Low Impact Expected,Unemployment Rate,2.4%,2.5%,2.5%
+2026-10-29 23:50:00+00:00,JPY,Low Impact Expected,Prelim Industrial Production m/m,2.2%,1.2%,-2.4%
+2026-10-29 23:50:00+00:00,JPY,Low Impact Expected,Retail Sales y/y,2.3%,3.3%,2.9%
+2026-10-30 00:30:00+00:00,AUD,Low Impact Expected,PPI q/q,1.1%,1.0%,1.3%
+2026-10-30 00:30:00+00:00,AUD,Low Impact Expected,Private Sector Credit m/m,0.6%,0.5%,0.6%
+2026-10-30 03:02:00+00:00,JPY,High Impact Expected,BOJ Outlook Report,,,
+2026-10-30 03:02:00+00:00,JPY,High Impact Expected,BOJ Policy Rate,<1.25%,<1.25%,<1.25%
+2026-10-30 03:02:00+00:00,JPY,High Impact Expected,Monetary Policy Statement,,,
+2026-10-30 05:00:00+00:00,JPY,Low Impact Expected,Housing Starts y/y,-2.7%,2.7%,6.1%
+2026-10-30 06:30:00+00:00,EUR,Low Impact Expected,French Consumer Spending m/m,-0.5%,0.1%,-0.5%
+2026-10-30 06:30:00+00:00,EUR,Low Impact Expected,French Flash GDP q/q,-0.1%,0.1%,0.0%
+2026-10-30 06:30:00+00:00,JPY,High Impact Expected,BOJ Press Conference,,,
+2026-10-30 07:00:00+00:00,EUR,Low Impact Expected,German Import Prices m/m,2.1%,1.9%,1.0%
+2026-10-30 07:00:00+00:00,GBP,Low Impact Expected,Nationwide HPI m/m,0.0%,-0.2%,-0.3%
+2026-10-30 22:59:59+00:00,EUR,Medium Impact Expected,German Prelim CPI m/m,-0.2%,0.1%,0.6%
+2026-10-30 07:45:00+00:00,EUR,Low Impact Expected,French Prelim CPI m/m,0.4%,0.2%,-0.3%
+2026-10-30 07:45:00+00:00,EUR,Low Impact Expected,French Prelim Private Payrolls q/q,-0.1%,-0.1%,-0.1%
+2026-10-30 08:00:00+00:00,CHF,Low Impact Expected,KOF Economic Barometer,107.6,108.1,109.1
+2026-10-30 08:00:00+00:00,EUR,Low Impact Expected,Spanish Flash CPI y/y,4.9%,4.9%,4.9%
+2026-10-30 08:00:00+00:00,EUR,Low Impact Expected,Spanish Flash GDP q/q,0.6%,0.6%,0.7%
+2026-10-30 08:55:00+00:00,EUR,Low Impact Expected,German Unemployment Change,4K,5K,12K
+2026-10-30 09:00:00+00:00,EUR,Medium Impact Expected,German Prelim GDP q/q,0.2%,0.1%,0.3%
+2026-10-30 09:00:00+00:00,EUR,Low Impact Expected,Italian Prelim GDP q/q,0.0%,0.1%,0.2%
+2026-10-30 10:00:00+00:00,EUR,Low Impact Expected,Italian Prelim CPI m/m,0.9%,0.1%,0.7%
+2026-10-30 10:00:00+00:00,EUR,Low Impact Expected,Prelim Flash GDP q/q,0.4%,0.2%,0.6%
+2026-10-30 10:00:00+00:00,EUR,Low Impact Expected,Unemployment Rate,6.5%,6.4%,6.5%
+2026-10-30 12:30:00+00:00,CAD,Medium Impact Expected,GDP m/m,0.0%,0.2%,0.0%
+2026-10-30 12:30:00+00:00,USD,Medium Impact Expected,Employment Cost Index q/q,0.8%,0.8%,0.9%
+2026-10-30 13:45:00+00:00,USD,Low Impact Expected,Chicago PMI,55.3,55.8,58.8
+2026-10-30 16:00:00+00:00,USD,Low Impact Expected,FOMC Member Daly Speaks,,,
+2026-10-30 16:30:00+00:00,USD,Low Impact Expected,FOMC Member Musalem Speaks,,,
+2026-10-30 17:30:00+00:00,USD,Low Impact Expected,FOMC Member Logan Speaks,,,
+2026-10-31 01:30:00+00:00,CNY,Low Impact Expected,Manufacturing PMI,49.3,49.9,50.1
+2026-10-31 01:30:00+00:00,CNY,Low Impact Expected,Non-Manufacturing PMI,49.7,50.0,50.2
+2026-11-01 07:00:00+00:00,CAD,Non-Economic,Daylight Saving Time Shift,,,
+2026-11-01 07:00:00+00:00,USD,Non-Economic,Daylight Saving Time Shift,,,
+2026-11-02 00:30:00+00:00,AUD,Low Impact Expected,Building Approvals m/m,5.1%,1.8%,-5.2%
+2026-11-02 00:30:00+00:00,JPY,Low Impact Expected,Final Manufacturing PMI,53.3,53.3,53.3
+2026-11-02 01:45:00+00:00,CNY,Low Impact Expected,RatingDog Manufacturing PMI,52.0,52.0,52.1
+2026-11-02 05:30:00+00:00,AUD,Low Impact Expected,Commodity Prices y/y,12.5%,,15.9%
+2026-11-02 07:00:00+00:00,EUR,Low Impact Expected,German Retail Sales m/m,-2.0%,0.4%,1.2%
+2026-11-02 07:33:00+00:00,CHF,Low Impact Expected,Retail Sales y/y,1.6%,3.0%,3.9%
+2026-11-02 08:15:00+00:00,EUR,Low Impact Expected,Spanish Manufacturing PMI,52.2,50.4,51.0
+2026-11-02 08:30:00+00:00,CHF,Low Impact Expected,Manufacturing PMI,56.7,55.3,55.3
+2026-11-02 08:45:00+00:00,EUR,Low Impact Expected,Italian Manufacturing PMI,49.4,49.9,50.4
+2026-11-02 08:50:00+00:00,EUR,Low Impact Expected,French Final Manufacturing PMI,49.5,49.3,49.3
+2026-11-02 08:55:00+00:00,EUR,Low Impact Expected,German Final Manufacturing PMI,54.2,54.2,54.2
+2026-11-02 09:00:00+00:00,EUR,Low Impact Expected,Final Manufacturing PMI,52.7,52.4,52.4
