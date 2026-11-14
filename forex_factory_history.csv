@@ -91636,3 +91636,48 @@
 2026-11-11 22:59:59+00:00,USD,Non-Economic,Bank Holiday,,,
 2026-11-11 21:45:00+00:00,NZD,Low Impact Expected,Visitor Arrivals m/m,2.6%,,3.0%
 2026-11-12 00:01:00+00:00,GBP,Low Impact Expected,RICS House Price Balance,-36%,-33%,-34%
+2026-11-12 07:00:00+00:00,GBP,High Impact Expected,GDP m/m,0.2%,0.0%,0.0%
+2026-11-12 07:00:00+00:00,GBP,Medium Impact Expected,Prelim GDP q/q,0.7%,0.7%,0.5%
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Construction Output m/m,0.8%,0.0%,-0.5%
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Goods Trade Balance,-22.3B,-19.2B,-19.6B
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Index of Services 3m/3m,0.9%,0.9%,0.9%
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Industrial Production m/m,0.3%,-0.4%,0.7%
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Manufacturing Production m/m,0.7%,-0.5%,0.7%
+2026-11-12 07:00:00+00:00,GBP,Low Impact Expected,Prelim Business Investment q/q,0.4%,0.4%,1.8%
+2026-11-12 09:00:00+00:00,EUR,Low Impact Expected,ECB Economic Bulletin,,,
+2026-11-12 13:30:00+00:00,CAD,Low Impact Expected,Building Permits m/m,-4.1%,-4.0%,7.6%
+2026-11-12 13:30:00+00:00,USD,Medium Impact Expected,Unemployment Claims,200K,194K,191K
+2026-11-12 13:30:00+00:00,USD,Low Impact Expected,FOMC Member Hammack Speaks,,,
+2026-11-12 15:00:00+00:00,USD,Low Impact Expected,Existing Home Sales,3.75M,3.89M,3.97M
+2026-11-12 15:00:00+00:00,USD,Low Impact Expected,FOMC Member Barr Speaks,,,
+2026-11-12 15:30:00+00:00,AUD,Low Impact Expected,CB Leading Index m/m,0.0%,,-0.5%
+2026-11-12 16:15:00+00:00,USD,Low Impact Expected,FOMC Member Goolsbee Speaks,,,
+2026-11-12 17:00:00+00:00,USD,Low Impact Expected,Crude Oil Inventories,4.7M,-0.6M,-0.9M
+2026-11-12 17:30:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-11-12 18:01:00+00:00,USD,Low Impact Expected,30-y Bond Auction,5.44|2.4,,5.62|2.5
+2026-11-12 18:10:00+00:00,USD,Low Impact Expected,FOMC Member Daly Speaks,,,
+2026-11-12 18:30:00+00:00,USD,Low Impact Expected,FOMC Member Schmid Speaks,,,
+2026-11-12 19:00:00+00:00,USD,Low Impact Expected,Federal Budget Balance,-404.1B,-298.6B,-26.9B
+2026-11-12 19:30:00+00:00,EUR,Medium Impact Expected,ECB President Lagarde Speaks,,,
+2026-11-12 21:30:00+00:00,NZD,Low Impact Expected,BusinessNZ Manufacturing Index,54.9,,56.3
+2026-11-13 07:00:00+00:00,EUR,Low Impact Expected,German WPI m/m,0.4%,0.4%,1.9%
+2026-11-13 07:30:00+00:00,CHF,Low Impact Expected,PPI m/m,0.9%,0.2%,0.3%
+2026-11-13 07:45:00+00:00,EUR,Low Impact Expected,French Final CPI m/m,0.4%,0.4%,0.4%
+2026-11-13 09:00:00+00:00,CNY,Low Impact Expected,M2 Money Supply y/y,7.1%,7.2%,7.2%
+2026-11-13 09:00:00+00:00,CNY,Low Impact Expected,New Loans,-100B,80B,1080B
+2026-11-13 09:00:00+00:00,EUR,Low Impact Expected,Italian Trade Balance,2.08B,2.84B,1.82B
+2026-11-13 10:00:00+00:00,EUR,Low Impact Expected,Flash Employment Change q/q,0.0%,0.2%,0.1%
+2026-11-13 10:00:00+00:00,EUR,Low Impact Expected,Flash GDP q/q,0.4%,0.4%,0.4%
+2026-11-13 10:00:00+00:00,EUR,Low Impact Expected,Trade Balance,-8.7B,-4.5B,-7.8B
+2026-11-13 13:30:00+00:00,CAD,Low Impact Expected,Manufacturing Sales m/m,0.0%,0.1%,1.8%
+2026-11-13 13:30:00+00:00,CAD,Low Impact Expected,Wholesale Sales m/m,0.7%,0.5%,-1.4%
+2026-11-13 13:30:00+00:00,USD,High Impact Expected,Core PPI m/m,0.3%,0.3%,0.8%
+2026-11-13 13:30:00+00:00,USD,High Impact Expected,PPI m/m,0.3%,0.4%,1.4%
+2026-11-13 14:10:00+00:00,USD,Low Impact Expected,FOMC Member Collins Speaks,,,
+2026-11-13 14:30:00+00:00,GBP,Low Impact Expected,CB Leading Index m/m,-0.1%,,0.1%
+2026-11-13 14:40:00+00:00,USD,Low Impact Expected,FOMC Member Logan Speaks,,,
+2026-11-13 15:30:00+00:00,USD,Low Impact Expected,Natural Gas Storage,61B,65B,77B
+2026-11-13 15:50:00+00:00,USD,Low Impact Expected,FOMC Member Bowman Speaks,,,
+2026-11-13 16:00:00+00:00,EUR,Low Impact Expected,German Buba President Nagel Speaks,,,
+2026-11-13 17:00:00+00:00,USD,Low Impact Expected,FOMC Member Daly Speaks,,,
+2026-11-13 21:00:00+00:00,USD,Low Impact Expected,FOMC Financial Stability Report,,,
